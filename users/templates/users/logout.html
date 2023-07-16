@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    logout
+{% endblock title %}
+
+{% block content %}
+   <div class="container mt-5 d-flex justify-content-center align-items-center">
+        <div class="col-md-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Warning</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <a href="{% url 'users-register' %}" type="submit" class="btn btn-primary btn-block w-100">Sign Up</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

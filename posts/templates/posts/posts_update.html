@@ -1,0 +1,71 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Register page
+{% endblock title %}
+
+{% block content %}
+    <div class="container p-5 text-center" >
+        <h1>Post </h1>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy}}
+        <button type="submit" class="btn btn-outline-primary">ADD POST</button>
+        </form>
+    </div>
+{% endblock content %}
+
+
+{#<div class="container">#}
+{#  #}
+{#</div>#}
+<!-- 
+<div class="container mt-5">
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card p-3 py-4">
+
+                <div class="text-center">
+                    <img src="{{ user.profile.avatar.url }}" width="100" class="rounded-circle">
+                </div>
+
+                <div class="text-center mt-3">
+                    <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                    <h5 class="mt-2 mb-0">{{ user }}</h5>
+                    <span>UI/UX Designer</span>
+
+                    <div class="px-4 mt-1">
+                        <p>{{ user.profile.about }}</p>
+
+                    </div>
+
+                     <ul class="social-list">
+                        <li><i class="fa fa-facebook"></i></li>
+                        <li><i class="fa fa-dribbble"></i></li>
+                        <li><i class="fa fa-instagram"></i></li>
+                        <li><i class="fa fa-linkedin"></i></li>
+                        <li><i class="fa fa-google"></i></li>
+                    </ul>
+
+                    <div class="buttons">
+
+                        <a href="{% url 'update-profile' %}" class="btn btn-outline-primary px-4">Edit</a>
+                        <button class="btn btn-primary px-4 ms-3">Contact</button>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>=

@@ -1,0 +1,36 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+  Ditail
+{% endblock title %}
+
+{% block content %}
+
+<body class="bg-muted">
+
+
+<div class="container mt-5 " style="width: 18rem; height: 300px">
+    <div class="card shadow" style="width: 18rem;">
+        <img src="{{ postlar.image.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h3 class="card-title">{{ postlar.title }}</h3>
+            <p class="card-text">{{ postlar.content }}</p>
+{#            <a href="{% url 'detail' i.id %}" class="btn btn-primary">Go somewhere</a>#}
+            <p class="post-card-ifno">
+                <span class="post-card-author">@{{ postlar.author }} |</span>
+                <span class="post-card-author">{{ postlar.data|date:"l G:i" }} </span>
+                {% if object.author == user %}
+                    <div class="container text-center">
+                    <a class="btn btn-outline-danger btn-block" href="{% url 'delete-post'  object.id%}" data-width="">Delete</a>
+                    <a class="btn btn-outline-secondary btn-block" href="{% url 'post-update' object.id %}">Update</a>
+                    </div>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+                </div>
+            </div>
+</body>
+
+{% endblock content %}

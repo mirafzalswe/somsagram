@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Home page
+{% endblock title %}
+
+{% block content %}
+    <h1>HOME</h1>
+
+        <div class="container">
+            <div class="container-post">
+                <h3>{{ postlar }}</h3>
+                <h6>{{ postlar.content }}</h6>
+                <p>{{ postlar.author }}</p>
+                <p>{{ postlar.data }}</p>
+                <p class="post-card-ifno">
+                    <span class="post-card-author">@{{ postlar.author }} |</span>
+                    <span class="post-card-author">{{ postlar.data|date:"l G:i" }} </span>
+                </p>
+                    <a class="btn btn-outline-danger" href="{% url 'delete-post'  object.id%}">Delete</a>
+                    <a class="btn btn-outline-secondary" href="{% url 'post-update' object.id %}">Update</a>
+            </div>
+        </div>
+
+{% endblock content %}
