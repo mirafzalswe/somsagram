@@ -9,12 +9,12 @@
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="card bg-light">
-                    <div class="card-body">
+                    <div class="card-body" style="border: 2px solid #fa8400">
                         <h1 class="card-title text-center">Login</h1>
                         <form method="POST">
                         {% csrf_token %}
                         {{ form|crispy}}
-                        <button type="submit" class="btn btn-outline-primary">Login</button>
+                        <button type="submit" class="btn btn-outline-primary" style="width: 100%; background-color: #fa8400; color:white ">Login</button>
                         </form>
                     </div>
                 </div>

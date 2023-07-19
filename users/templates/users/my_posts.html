@@ -136,28 +136,133 @@
 .post-info{
     height: 10%;
 }
+
+    .container-post{
+        max-width: 900px;
+    }
+.cards-post{
+    align-items: center;
+    margin: 30px;
+    margin-left: 250px;
+    border-radius: 30px;
+    padding: 30px;
+    /* background-color: blue; */
+    width: 800px;
+    height: 350px;
+    transition: transform 0.2s ease;
+    /* display: flex; */
+}
+.cards-post:hover{
+    transform: translateX(5px);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px black;
+
+}
+
+.card-within{
+    background-color: #fa8400;
+    padding: 8px;
+    /* padding-bottom: 100px; */
+    height: 270px;
+    width: 100% ;
+    border-radius: 20px;
+    display: flex; /* Горизонтальное смещение, вертикальное смещение, размытие, цвет тени */
+
+}
+.img-post{
+    width: 50%;
+
+    height: 100%;
+
+
+}
+.img-new{
+    max-width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.post-content{
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px;
+}
+.content{
+    height: 80%;
+    padding:5px
+
+}
+.text-content{
+    padding: 5px;
+}
+
+.title{
+    text-align: center;
+}
+.img-author{
+    border: solid 1px;
+    border-radius: 10px;
+    height: 20%;
+    display: flex;
+    padding: 5px;
+}
+.img-au{
+    border-radius: 50%;
+    height: 100%;
+    width: 20%;
+    margin-left: 4px;
+}
+.about{
+    /* width: 80%; */
+    height: 100%;
+    margin-left: 13px;
+}
+
+.img-au{
+    border-radius: 50%;
+    height: 100%;
+    width: 15%;
+    margin-left: 4px;
+}
+.latam{
+    margin-right: 200px;
+}
 </style>
-    <div class="container mt-5 p-5 pt-5">
+    <div class="container mt-5">
 <div class="card-container mt-5 shadow" >
-  {% for i in postlar %}
-  <figure class="snippet-card somsa">
-    <img src="{{ i.image.url }}" alt="sample87" />
-    <figcaption>
-      <img src="{{ i.author.profile.avatar.url }}" alt="profile-sample4" class="profile-img" />
-      <h2 class="text-center">{{ i.title }}<span>Engineer</span></h2>
-        <p class="overflow-hidden text-break">{{ i.content }}</p>
-      <a href="{% url 'detail' i.id %}" class="follow-link">Moree</a>
-      <div class="post-info">
-        <p class="post-card-info">
-          <span class="post-card-author">@{{ i.author }} |</span>
-          <span class="post-card-date">{{ i.data|date:"l G:i" }}</span>
-        </p>
-      </div>
-    </figcaption>
-  </figure> 
-  {% endfor %}
+    <div class="conainer-post p-4 latam">
+    {% for i in postlar %}
+    <div class="cards-post">
+        <div class="card-within">
+            <div class="img-post">
+                <img src="{{ i.image.url }}" alt="" class="img-new">
+            </div>
+            <div class="post-content">
+                <div class="content">
+                    <div class="title">
+                        <h1>{{ i.title }}</h1>
+                    </div>
+                    <div class="text-content">
+                        <p class="text-break ">{{ i.content|truncatewords:30 }}
+                        <a href="{% url 'detail' i.id %}"><i class="fa-solid fa-ellipsis"></i></a></p>
+                    </div>
+                </div>
+                <div class="img-author">
+                    <div class="about" style="display: flex; justify-content: space-around">
+                        <a class="btn btn-danger" href="{% url 'delete-post' i.id %}" style="width: 50%; margin-left: 60px">Delete</a>
+                        <a  class="btn btn-info" href="{% url 'post-update' i.id %}" style="width: 50%; margin-left: 40px;">Update</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div></div>
 </div>
-</div>
+
 <script>
 /* Demo purposes only */
 $(".hover").mouseleave(

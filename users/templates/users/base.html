@@ -2,43 +2,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+
     <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-tvJs2pvxywyQ8nnqUB8T4D6j4qRNtDxkOTdVse2J8ro5r28og4L0z+jT7DuxRVQos8aLIIEugBHDoI4jYyQZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
 </head>
+
 <title>
     {% block title %}{% endblock title %}
 </title>
-<body class="bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="bg-red"style="background-color: antiquewhite">
+    <nav class="navbar navbar-expand-lg nani mt-3 m-3" style="background-color: #fa8400; color:white; border-radius: 20px">
         <div class="container">
-            <a class="navbar-brand" href="#">SomSaGram</a>
+            <a class="navbar-brand" href="{% url 'posts-home' %}" style="color: white;"><b>SomSaGram</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'posts-home' %}">Home</a>
+                        <a class="nav-link" href="{% url 'posts-home' %}" style="color: white;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#" style="color: white;">About</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'new_post' %}">Add</a>
+                        <a class="nav-link" href="{% url 'new_post' %}" style="color: white">Add</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users-logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'users-logout' %}" style="color: white;">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users-profile' %}">Profil</a>
+                        <a class="nav-link" href="{% url 'users-profile' %}" style="color: white;">Profil</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url  'users-register' %}">Register</a>
+                        <a class="nav-link" href="{% url  'users-register' %}" style="color: white;">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users-login' %}">Login </a>
+                        <a class="nav-link" href="{% url 'users-login' %}" style="color:white">Login </a>
                     </li>
                     {% endif %}
                 </ul>
@@ -51,6 +56,7 @@
     {% block content %}
 
     {% endblock content %}
+    <script src="https://kit.fontawesome.com/081c4004bc.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -5,16 +5,31 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="container mt-5">
+    <div class="lali">
+    <div class="container  somsa" >
         <h1 class="text-center mb-4">Create a New Post</h1>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                         {{ form|crispy }}
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" style="width:100%; background-color: #fa8400" class="btn btn-primary">Create</button>
                 </form>
             </div>
         </div>
     </div>
+    </div>
+    <style>
+    .somsa{
+        border:2px solid #fa8400;
+border-radius: 20px; height: 610px; width: 600px;
+        background-color: azure;
+        padding: 20px;
+
+    }
+    .lali{
+        padding: 30px;
+        margin:40px
+    }
+    </style>
 {% endblock content %}

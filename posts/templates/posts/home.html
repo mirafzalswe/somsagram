@@ -1,180 +1,132 @@
 {% extends 'users/base.html' %}
-
 {% block title %}
-    Home
+    HoMe PaGe
 {% endblock title %}
 
 {% block content %}
+    <div class="conainer-post p-4">
+    {% for i in postlar %}
+    <div class="cards-post">
+        <div class="card-within">
+            <div class="img-post">
+                <img src="{{ i.image.url }}" alt="" class="img-new">
+            </div>
+            <div class="post-content">
+                <div class="content">
+                    <div class="title">
+                        <h1>{{ i.title }}</h1>
+                    </div>
+                    <div class="text-content">
+                        <p class="text-break ">{{ i.content|truncatewords:30 }}
+                        <a href="{% url 'detail' i.id %}"><i class="fa-solid fa-ellipsis"></i></a></p>
+                    </div>
+                </div>
+                <div class="img-author">
+                    <img src="{{ i.author.profile.avatar.url }}" alt="" class="img-au">
+                    <div class="about">
+                        <p class="post-card-info">
+                          <span class="post-card-author">@{{ i.author }} |</span>
+                          <span class="post-card-date">{{ i.data|date:"l G:i" }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <style>
+    .container-post{
+        max-width: 900px;
+    }
+.cards-post{
+    align-items: center;
+    margin: 30px;
+    margin-left: 250px;
+    border-radius: 30px;
+    padding: 30px;
+    /* background-color: blue; */
+    width: 800px;
+    height: 350px;
+    transition: transform 0.2s ease;
+    /* display: flex; */
+}
+.cards-post:hover{
+    transform: translateX(5px);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px black;
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&display=swap');
-
-.snippet-card {
-    padding:20px;
-  font-family: 'Roboto', Arial, sans-serif;
-  display: inline-block;
-  margin: 10px;
-
-  height: 570px;
- 
-  width: 280px;
-  color: #000000;
-  text-align: left;
-  line-height: 1.4em;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
 }
 
-.snippet-card * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-
-.snippet-card img {
-    height: 50%;
-    width: 100%;
-  max-width: 100%;
-  vertical-align: top;
-  opacity: 0.85;
-  border-radius: 8px 8px 0 0;
-}
-
-.snippet-card figcaption {
-  {#width: 100%;#}
-  background-color: #fdfdfd;
-  padding: 25px;
-  position: relative;
-  border-radius: 0 0 8px 8px;
-}
-
-.snippet-card figcaption:before {
-  position: absolute;
-  content: '';
-  bottom: 100%;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 55px 0 0 400px;
-  border-color: transparent transparent transparent #ffffff;
-}
-
-.snippet-card figcaption a {
-  padding: 5px;
-  border: 1px solid #0c0c0c;
-  color: #030303;
-  font-size: 0.7em;
-  text-transform: uppercase;
-  margin: 10px 0;
-  display: inline-block;
-  opacity: 0.65;
-  width: 47%;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.snippet-card figcaption a:hover {
-  opacity: 1;
-}
-
-.snippet-card .profile-img {
-  border-radius: 50%;
-  position: absolute;
-  bottom: 100%;
-  left: 25px;
-  z-index: 1;
-  max-width: 90px;
-  max-height: 90px; /* Добавлено свойство max-height */
-  opacity: 1;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-.snippet-card .follow-link {
-  margin-right: 4%;
-  border-color: #2980b9;
-  color: #2980b9;
-}
-
-.snippet-card h2 {
-  margin: 0 0 5px;
-  font-weight: 300;
-}
-
-.snippet-card h2 span {
-  display: block;
-  font-size: 0.5em;
-  color: #2980b9;
-}
-
-.snippet-card p {
-  margin: 0 0 10px;
-  font-size: 0.8em;
-  letter-spacing: 1px;
-  opacity: 0.8;
-}
-
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.card-container .snippet-card {
-  box-shadow: 0 2px 6px rgba(241, 241, 241, 0.1);
-}
-
-.snippet-card {
-  /* ... */
-  overflow: hidden;
+.card-within{
+    background-color: #fa8400;
+    padding: 8px;
+    /* padding-bottom: 100px; */
+    height: 270px;
+    width: 100% ;
+    border-radius: 20px;
+    display: flex; /* Горизонтальное смещение, вертикальное смещение, размытие, цвет тени */
 
 }
-.snippet-card somsa{
-    margin: 20px;
+.img-post{
+    width: 50%;
+
+    height: 100%;
+
+
+}
+.img-new{
+    max-width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.post-content{
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px;
+}
+.content{
+    height: 80%;
+    padding:5px
+
 }
 .text-content{
-    height: 40%;
+    padding: 5px;
 }
-.post-info{
-    height: 10%;
-}
-</style>
-    <div class="container mt-5 p-5 pt-5">
-<div class="card-container mt-5 shadow" >
-  {% for i in postlar %}
-    <figure class="snippet-card somsa">
-      <img src="{{ i.image.url }}" alt="sample87" />
-      <figcaption>
-        <img src="{{ i.author.profile.avatar.url }}" alt="profile-sample4" class="profile-img" />
-          <div class="text-content">
 
-        <h2 class="text-center text-break">{{ i.title }}<span>Engineer</span></h2>
-          <p class="text-truncate overflow-hidden">{{ i.content }}</p>
-          </div>
-        <a href="{% url 'detail' i.id %}" class="follow-link">Moree</a>
-        <div class="post-info">
-          <p class="post-card-info">
-            <span class="post-card-author">@{{ i.author }} |</span>
-            <span class="post-card-date">{{ i.data|date:"l G:i" }}</span>
-          </p>
-        </div>
-      </figcaption>
-    </figure>
-  {% endfor %}
-</div>
-</div>
-<script>
-/* Demo purposes only */
-$(".hover").mouseleave(
-  function () {
-    $(this).removeClass("hover");
-  }
-);
-</script>
+.title{
+    text-align: center;
+}
+.img-author{
+    border: solid 1px;
+    border-radius: 10px;
+    height: 20%;
+    display: flex;
+    padding: 5px;
+}
+.img-au{
+    border-radius: 50%;
+    height: 100%;
+    width: 20%;
+    margin-left: 4px;
+}
+.about{
+    /* width: 80%; */
+    height: 100%;
+    margin-left: 13px;
+}
+
+.img-au{
+    border-radius: 50%;
+    height: 100%;
+    width: 15%;
+    margin-left: 4px;
+}
+    </style>
+
 
 {% endblock content %}
